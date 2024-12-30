@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Support Chat</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .chat-box {
+      width: 300px;
+      height: 400px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-y: scroll;
+      margin-bottom: 20px;
+    }
+    .input-box {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-box" id="chat-box"></div>
+  <input type="text" id="message" class="input-box" placeholder="Type a message...">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    var socket = io();
+
+    socket.on('chat message', function(msg) {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.innerHTML += '<div>' + msg + '</div>';
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    function sendMessage() {
+      const message = document.getElementById('message').value;
+      socket.emit('chat message', message);
+      document.getElementById('message').value = '';
+    }
+  </script>
+
+</body>
+</html>

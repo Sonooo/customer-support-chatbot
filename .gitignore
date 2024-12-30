@@ -1,0 +1,40 @@
+# NodeJS specific
+.nyc_output/
+coverage/
+node_modules/
+npm-debug.log
+package-lock.json
+test/*.log
+
+# Logs
+logs/*.log
+npm-debug.log*
+
+# Cache files
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+.eslintcache
+.cache
+.parcel-cache
+.npm
+
+# VSCode editor-related files
+.vscode-test
+.vscode
+
+# Environment variables
+.env
+.env.test
+.custom-env
+
+# Serverless folder (if applicable)
+.serverless
+
+# ESLint cache (if applicable)
+.eslintcache
+
+# Optional
+.pids
+.seed
+.pid.lock
